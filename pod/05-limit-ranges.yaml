@@ -5,15 +5,21 @@ metadata:
   name: cpu-resource-constraint
 spec:
   limits:
-  - default:
+  - default: # this section defines default limits
       cpu: 500m
-    max:
+    defaultRequest: # this section defines default requests
+      cpu: 500m
+    max: # max and min define the limit range
       cpu: "1"
     min:
       cpu: 100m
     type: Container
 
-  - max:
+  - default: # this section defines default limits
+      cpu: 500m
+    defaultRequest: # this section defines default requests
+      cpu: 500m
+    max: # max and min define the limit range
       cpu: "1"
     min:
       cpu: 100m
