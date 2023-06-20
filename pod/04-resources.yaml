@@ -15,3 +15,13 @@ spec:
         limits:
           memory: "30Mi"
           cpu: "200"
+
+#Stress: It will exhaust all the resorces.
+
+# kubectl apply -f 04-resources.yaml
+# kubectl get pods -o wide
+# kubectl exec -it stress -- bash
+# stress-ng --help
+# stress-ng --cpu 1
+
+# Go check CPU utilization in the respective NODE server by using top command.

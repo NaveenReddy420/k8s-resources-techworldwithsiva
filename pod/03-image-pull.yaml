@@ -10,3 +10,19 @@ spec:
       imagePullPolicy: Always
       ports:
         - containerPort: 80
+
+# Image pull policy:
+# In Kubernetes, the image pull policy determines when and how a container image should be pulled from a container registry. It can be set at the pod level or the container level. The image pull policy can be one of the following options:
+
+# Always: 
+# This policy ensures that the image is always pulled from the registry, even if a local copy of the image already exists on the node. This is the default policy if not specified explicitly.
+
+# IfNotPresent: 
+# This policy pulls the image only if it does not exist locally on the node. If a local copy is found, it uses that instead of pulling from the registry.
+
+# Never: 
+# This policy instructs Kubernetes to never pull the image from the registry. It assumes that the image already exists on the node. If the image is not present locally, the pod will fail to start or run.
+
+# kubectl apply -f 03-image-pull.yaml --dry-run=client
+# kubectl apply -f 03-image-pull.yaml
+# kubectl delete -f 03-image-pull.yaml

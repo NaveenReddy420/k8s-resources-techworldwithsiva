@@ -29,3 +29,15 @@ spec:
       image: naveenreddy369/stress
       imagePullPolicy: Always
       command: ["sleep", "200"]
+
+
+# LimitRanges:
+# LimitRanges are used to set resource limits for containers running in pods.
+# A LimitRange defines minimum and maximum limits for CPU, memory, and storage resources that can be allocated to a pod.
+# It ensures that containers don't exceed the specified resource boundaries, preventing resource hogging and promoting fairness and stability in the cluster.
+# If a container tries to exceed the defined limits, Kubernetes takes action, such as terminating the container or throttling its resource usage.
+
+# kubectl apply -f 05-limit-ranges.yaml
+# kubectl describe pod stress
+
+# eventhough we didn't mention the resources and limits, default resources and limits are taken.

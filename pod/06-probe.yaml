@@ -12,3 +12,39 @@ spec:
           port: 80
         initialDelaySeconds: 3
         periodSeconds: 5
+
+# Health checks in K8s:
+# In Kubernetes, health checks are used to monitor the health and readiness of containers running in a Pod. There are two types of health checks commonly used in Kubernetes:
+
+# Liveness Probes:
+# A liveness probe is used to determine whether a pod is running properly. If the liveness probe fails, Kubernetes will restart the pod.
+
+# There are three types of liveness probes:
+
+# HTTP GET: Performs an HTTP GET request to a specified endpoint and considers the pod healthy if it receives a successful response (HTTP status code 2xx or 3xx).
+# TCP Socket: Attempts to open a TCP connection to a specified port on the pod and considers the pod healthy if the connection is successful.
+# Exec: Executes a specified command inside the pod and considers the pod healthy if the command exits with a status code of 0.
+
+# Readiness Probes:
+# A readiness probe determines whether a pod is ready to serve traffic. If a pod fails the readiness probe, it is temporarily removed from the pool of service endpoints, and no traffic is routed to it. Once the readiness probe passes, the pod is added back to the pool of endpoints, and traffic can be directed to it.
+
+# The three types of readiness probes are the same as liveness probes:
+
+# HTTP GET
+# TCP Socket
+# Exec
+
+# kubectl apply -f 06-probe.yaml
+# kubectl get pods
+# kubectl exec -it probe -- bash
+# cd /usr/share/nginx/html/
+# ls -l
+# rm -rf index.html
+# watch kubectl get pods
+
+# Every 2.0s: kubectl get pods                                                                                  Mon Jun 19 12:16:11 2023
+
+# NAME     READY   STATUS             RESTARTS       AGE
+# probe    1/1     Running            1 (11s ago)    4m57s
+
+# you can see above after deleting index.html page, container is restarted. you can see restart count as 1.
