@@ -30,3 +30,10 @@ spec:
     envFrom:
       - configMapRef:
             name: course-config
+
+# kubectl apply -f 07-pod-config.yaml
+# kubectl get pods
+# kubectl exec -it config-pod -- /bin/bash
+# env
+
+# In real-time projects, it is not recommended to make direct changes to Pod definition files for updating configuration settings. Instead, a best practice is to use ConfigMaps in Kubernetes and refer to the key-value pairs as environment variables within the Pod.
