@@ -12,3 +12,11 @@ spec:
   containers:
     - name: nginx
       image: nginx
+
+# Labels in Kubernetes are key-value pairs attached to objects (such as pods, services, or deployments) that allow for flexible and efficient grouping, selection, and organization of resources.
+
+# kubectl apply -f 03-labels.yaml
+# If you want see the labels use below command
+# kubectl describe pod label-pod
+
+# Annotations in Kubernetes are key-value pairs attached to objects (such as pods, services, or deployments) that provide additional metadata or information about the object, but they are not used for grouping or selection purposes like labels.
