@@ -11,3 +11,31 @@ spec:
           value: docker
         - name: trainer
           value: siva
+
+
+# kubectl apply -f 06-env.yaml
+# [ec2-user@ip-172-31-10-222 pod]$ kubectl get pods
+# NAME   READY   STATUS    RESTARTS   AGE
+# env    1/1     Running   0          7s
+# [ec2-user@ip-172-31-10-222 pod]$ kubectl exec -it env -- bash
+# root@env:/# env
+# KUBERNETES_SERVICE_PORT_HTTPS=443
+# KUBERNETES_SERVICE_PORT=443
+# HOSTNAME=env
+# PWD=/
+# PKG_RELEASE=1~bookworm
+# HOME=/root
+# KUBERNETES_PORT_443_TCP=tcp://10.100.0.1:443
+# NJS_VERSION=0.7.12
+# TERM=xterm
+# SHLVL=1
+# trainer=siva
+# KUBERNETES_PORT_443_TCP_PROTO=tcp
+# KUBERNETES_PORT_443_TCP_ADDR=10.100.0.1
+# KUBERNETES_SERVICE_HOST=10.100.0.1
+# KUBERNETES_PORT=tcp://10.100.0.1:443
+# KUBERNETES_PORT_443_TCP_PORT=443
+# PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# NGINX_VERSION=1.25.1
+# course=docker
+# _=/usr/bin/env
