@@ -10,5 +10,6 @@ data:
 # kubectl get configmaps
 
 # In real-time projects, it is not recommended to make direct changes to Pod definition files for updating configuration settings. Instead, a best practice is to use ConfigMaps in Kubernetes and refer to the key-value pairs as environment variables within the Pod.
+# Pod definition file is very critical, if we tried mess with it entire application will go down.
 
 # A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
