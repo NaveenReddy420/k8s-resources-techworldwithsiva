@@ -35,3 +35,18 @@ spec:
     - name: almalinux
       image: almalinux
       command: ["sleep","100000"]
+
+# kubectl apply -f 01-service.yaml
+# kubectl get service
+# kubectl get pods
+# kubectl exec -it debug -- bash
+# curl http://nginx-service
+
+# Service:
+# Service is a method for exposing a network application that is running as one or more Pods in your cluster.
+
+# A service acts as a stable endpoint for other components within the cluster or external entities, allowing them to interact with the pods without knowing their specific IP addresses. It ensures that requests are load-balanced across the available pods
+
+# We will attach our pods to the service. From the web we will access the pods through service.
+
+# WEB------->Service<---------Pods (Pod1, Pod2,......)
