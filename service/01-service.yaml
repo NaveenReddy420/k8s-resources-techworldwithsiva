@@ -42,6 +42,8 @@ spec:
 # kubectl exec -it debug -- bash
 # curl http://nginx-service
 
+#As you can see, by using above command we are calling through service name.
+
 # Service:
 # Service is a method for exposing a network application that is running as one or more Pods in your cluster.
 
