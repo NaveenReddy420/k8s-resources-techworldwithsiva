@@ -32,3 +32,11 @@ spec:
 
 # USER----->NODE1:<NODE-PORT> --->Cluster IP --> Container
 #           NODE2:<NODE-PORT> --->Cluster IP --> Container
+
+# kubectl apply -f 02-service.yaml
+# [ec2-user@ip-172-31-10-32 service]$ kubectl get service
+# NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+# kubernetes      ClusterIP   10.100.0.1       <none>        443/TCP        105m
+# nginx-service   NodePort    10.100.146.181   <none>        80:30507/TCP   20s
+#  kubectl get pods -o wide
+#  Open browser, PUBLIC_IP-of-NODE:30507
