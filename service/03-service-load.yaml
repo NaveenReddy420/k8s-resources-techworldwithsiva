@@ -22,8 +22,8 @@ spec:
     server: nginx
   ports:
     - protocol: TCP
-      port: 80        #This line specifies the port number that the Service will listen on for incoming traffic. In this case, it sets the port number to 80, which is a common port used for HTTP traffic.
-      targetPort: 80  #This line determines the port to which incoming traffic will be routed within the Pods. It defines the target port in the container where the application is listening. In this configuration, incoming traffic arriving at port 80 on the Service will be forwarded to port 80 of the container running inside the Pods.
+      port: 80        #This line specifies the port number that the Service will listen on for incoming traffic. In this case, it sets the port number to 80, which is a common port used for HTTP traffic. (Loadbalencer port)
+      targetPort: 80  #This line determines the port to which incoming traffic will be routed within the Pods. It defines the target port in the container where the application is listening. In this configuration, incoming traffic arriving at port 80 on the Service will be forwarded to port 80 of the container running inside the Pods. (Container port)
 
 # kubectl apply -f 03-service-load.yaml
 # [ec2-user@ip-172-31-10-32 service]$ kubectl get service
