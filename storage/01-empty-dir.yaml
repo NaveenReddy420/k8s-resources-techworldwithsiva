@@ -21,6 +21,14 @@ spec:
     - name: shared-logs
       emptyDir: {}
 
+
+#  kubectl apply -f 01-empty-dir.yaml
+#  kubectl get pods
+#  kubectl exec simple-webapp -it -c sidecar-container -- sh
+#  ls -l
+#  cd /var/log/nginx 
+#  ls -l
+
 # ["sh","-c","while true; do cat /var/log/nginx/access.log; sleep 30; done"]
 
 # sh: This specifies the shell to use for executing the command. In this case, it uses the default shell available in the container.
