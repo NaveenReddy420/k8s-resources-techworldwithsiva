@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-webapp
+  labels:
+    app: webapp
+spec:
+  containers:
+    - name: main-application
+      image: nginx
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log/nginx
+    - name: sidecar-container
+      image: busybox
+      command: ["sh","-c","while true; do cat /var/log/nginx/access.log; sleep 30; done"]
+      volumeMounts:
+        - name: shared-logs
+          mountPath: /var/log/nginx
+  volumes:
+    - name: shared-logs
+      emptyDir: {}
+
+# ["sh","-c","while true; do cat /var/log/nginx/access.log; sleep 30; done"]
+
+# sh: This specifies the shell to use for executing the command. In this case, it uses the default shell available in the container.
+
+# -c: This flag indicates that the following string should be interpreted as a command.
+
+# while true; do cat /var/log/nginx/access.log; sleep 30; done: This is the actual command that will be executed within the container. It creates an infinite loop that continuously reads and outputs the contents of the file /var/log/nginx/access.log using the cat command. After outputting the file contents, it pauses execution for 30 seconds using the sleep command. This loop ensures that the access.log file is continuously monitored and its content is displayed in the container's logs.
+
+# The purpose of this command is to create a sidecar container that runs alongside the main application container. The sidecar container reads and displays the contents of the nginx access log file, providing real-time visibility into the log data. By continuously executing this command, the sidecar container acts as a log aggregator or monitoring tool for the nginx logs in the shared volume /var/log/nginx.
