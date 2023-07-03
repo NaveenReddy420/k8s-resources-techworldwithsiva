@@ -93,3 +93,6 @@ spec:
         items:
           - key: nginx.conf
             path: nginx.conf
+
+# kubectl apply -f 02-config-map.yaml
+# kubectl get pods

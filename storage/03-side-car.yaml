@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+data:
+  filebeat.yml: |-
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/nginx/access.log
+        - /var/log/nginx/error.log
+
+    output.elasticsearch:
+      hosts: ["elasticsearch:9200"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-filebeat
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    volumeMounts:
+    - name: nginx-log
+      mountPath: /var/log/nginx
+  - name: filebeat
+    image: docker.elastic.co/beats/filebeat:7.16.3
+    volumeMounts:
+    - name: filebeat-config
+      mountPath: /usr/share/filebeat/filebeat.yml
+      subPath: filebeat.yml
+    - name: nginx-log
+      mountPath: /var/log/nginx
+  volumes:
+  - name: filebeat-config
+    configMap:
+      name: filebeat-config
+  - name: nginx-log
+    emptyDir: {}
+
+# This script sets up a Pod with Nginx and Filebeat containers, where Nginx writes logs to the "/var/log/nginx" directory, and Filebeat monitors and ships those logs to Elasticsearch based on the configuration provided in the ConfigMap. This allows for centralized log management and analysis using Elasticsearch.
