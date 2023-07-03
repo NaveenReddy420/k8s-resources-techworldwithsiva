@@ -40,4 +40,8 @@ spec:
   - name: nginx-log
     emptyDir: {}
 
+# kubectl apply -f 03-side-car.yaml
+# kubectl get pods
+# kubectl logs nginx-filebeat -c filebeat
+
 # This script sets up a Pod with Nginx and Filebeat containers, where Nginx writes logs to the "/var/log/nginx" directory, and Filebeat monitors and ships those logs to Elasticsearch based on the configuration provided in the ConfigMap. This allows for centralized log management and analysis using Elasticsearch.
