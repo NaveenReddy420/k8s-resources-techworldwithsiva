@@ -48,6 +48,11 @@ spec:
     persistentVolumeClaim:
       claimName: my-ebs-pvc
 
+# Before running above script, we need to install drivers related to EBS.
+# https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
+# kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.20"
+# kubectl get pods -n kube-system
+
 # Attach the Policy if Ec2 full access to the node machines(IAM Role)
 # instances need to be in the same region and availability zone as the EBS volume
 
