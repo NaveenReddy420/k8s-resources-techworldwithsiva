@@ -36,3 +36,7 @@ spec:
   - name: my-ebs-volume
     persistentVolumeClaim:
       claimName: my-ebs-dynamic-pvc
+
+# kubectl apply -f 06-ebs-dynamic.yaml
+# kubectl get pods
+# NOTE: Since we mention the reclaimPolicy: Delete, if we delete the pod automatically EBS volume is also deleted in AWS Console.
